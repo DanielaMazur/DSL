@@ -1,6 +1,8 @@
 import re
 import json
 
+from DSL_Grammar import OPEN_BRACKET, CLOSE_BRACKET
+
 class Tokenizer(object):
     def __init__(self, programText):
       self.programText = programText
@@ -42,15 +44,10 @@ class Tokenizer(object):
 
     def splitStringByBrackets(self, inputString):
         lineTokens = []
-        if '(' in inputString or  ')' in inputString:
-            if '(' in inputString:
-                for bracketSplit in re.split("(\()",inputString.strip()):
-                    if bracketSplit != '':
-                        lineTokens.append(bracketSplit)
-            elif ')' in inputString:
-                for bracketSplit in re.split("(\))",inputString.strip()):
-                    if bracketSplit != '':
-                        lineTokens.append(bracketSplit)
+        if OPEN_BRACKET in inputString or CLOSE_BRACKET in inputString:
+            for bracketSplit in re.split("(\()|(\))",inputString.strip()):
+                if bracketSplit != '' and bracketSplit != None:
+                    lineTokens.append(bracketSplit)
         else:
             lineTokens.append(inputString)
 

@@ -1,4 +1,4 @@
-from DSL_Grammar import SHAPE_NAME, SHAPE_METHODS, STRING, NUMBERIC_TYPE, IDENTIFIER, OPEN_BRACKET, CLOSE_BRACKET, DOT, METHOD_NAME
+from DSL_Grammar import SHAPE_NAME, SHAPE_METHODS, STRING, NUMERIC_TYPE, IDENTIFIER, OPEN_BRACKET, CLOSE_BRACKET, DOT, METHOD_NAME
 
 class SemanticAnalyzer(object): 
     def __init__(self, lexer):
@@ -6,6 +6,9 @@ class SemanticAnalyzer(object):
         self.registeredVariables = {}
 
     def getVariableDeclarationErrors(self, variableDeclarationLine):
+        if len(variableDeclarationLine) == 1:
+            raise Exception("Variable Name is missing")
+        
         variableNameType = variableDeclarationLine[1].type
 
         if variableNameType == 'IDENTIFIER' and len(variableDeclarationLine) == 2:
@@ -33,7 +36,7 @@ class SemanticAnalyzer(object):
         variableShapeType = self.registeredVariables[methodInvocationLine[0].value]
         if invokedMethodName not in SHAPE_METHODS[variableShapeType].keys():
             raise Exception("{methodName} method does not exist on variable type {variableType}".format(methodName=invokedMethodName, variableType=variableShapeType))
-        if methodInvocationLine[3].type != 'OPEN_BRACKET':
+        if len(methodInvocationLine) < 4  or methodInvocationLine[3].type != 'OPEN_BRACKET':
             raise Exception("Method call was expected. Use '(<parameter_list>)' to call a method")
 
         tokenTypes = []
@@ -57,13 +60,12 @@ class SemanticAnalyzer(object):
                 raise Exception("Two consecutive commas are not allowed")
             else:
                 parameterListWithoutCommas.append(invokedMethodParameterList[index])
-
         if len(invokedMethodParameterListGrammar) != len(parameterListWithoutCommas):
             raise Exception("{numberOfArguments} arguments received but {expectedNumberOfArguments} arguments expected".format(numberOfArguments=len(parameterListWithoutCommas), expectedNumberOfArguments=len(invokedMethodParameterListGrammar)))
 
         for index in range(len(parameterListWithoutCommas) - 1):
             if parameterListWithoutCommas[index].type != invokedMethodParameterListGrammar[index]:
-                raise Exception("Variable type mismatch in method argument list. {expectedType} was expected, but {actualType} was found".format(expectedType=invokedMethodParameterListGrammar[index], actualType=parameterListWithoutCommas[index]))
+                raise Exception("Variable type mismatch in method argument list. {expectedType} was expected, but {actualType} was found".format(expectedType=invokedMethodParameterListGrammar[index], actualType=parameterListWithoutCommas[index].type))
 
     def getSemanticErrors(self):
         lexerTokens = self.lexer.getLexerTokens()

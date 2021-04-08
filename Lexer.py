@@ -1,7 +1,7 @@
 import json
 import re
 
-from DSL_Grammar import SHAPE_NAME, SHAPE_METHODS, STRING, NUMBERIC_TYPE, IDENTIFIER, OPEN_BRACKET, CLOSE_BRACKET, DOT, METHOD_NAME, COMMA
+from DSL_Grammar import SHAPE_NAME, SHAPE_METHODS, STRING, NUMERIC_TYPE, IDENTIFIER, OPEN_BRACKET, CLOSE_BRACKET, DOT, METHOD_NAME, COMMA
 
 class Token(object):
   def __init__(self, type, value):
@@ -42,8 +42,8 @@ class Lexer(object):
       return 'DOT'
     elif word == COMMA:
       return 'COMMA'   
-    elif re.findall(NUMBERIC_TYPE, word):
-      return 'NUMBERIC_TYPE'
+    elif re.findall(NUMERIC_TYPE, word):
+      return 'NUMERIC_TYPE'
 
   def getLexerTokens(self):
     lexer = {}
