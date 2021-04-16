@@ -1,42 +1,48 @@
 import re
 import json
+from Tokenizer import Tokenizer
+from Lexer import Lexer
 
 class Parser(object):
   def __init__(self, lexer):
-    self.lexer = lexer
+    self.lexer = lexer.getLexerTokens()
     self.parser = {}
   
   def getParserAST(self):
-    for key in self.lexer:
-        code_line = self.lexer[key]
+    for key in self.lexer: #key : 0, 1, 2, 3, ...
+        code_line = self.lexer[key] # code_line : [(SHAPE_NAME, 'Triangle'), (IDENTIFIER, 'myTriangle')]
         for token in code_line:
-            if token[1] == 'shapeName' and token[0] not in self.parser:
-                self.parser[token[0]] = {}
+            if token.type == 'SHAPE_NAME' and token.value not in self.parser:
+                self.parser[token.value] = {}
+#    print(self.parser)
 
     for shapeName in self.parser:
         identifiers = {}
         for key in self.lexer:
             code_line = self.lexer[key]
-            if len(code_line) > 1 and code_line[1][1] == 'identifier' and code_line[0][0] == shapeName:
-                identifiers[code_line[1][0]] = {}
+#            print(code_line)
+            if code_line[1].type == 'IDENTIFIER' and code_line[0].value == shapeName:
+                identifiers[code_line[1].value] = {}
         self.parser[shapeName] = identifiers
+#    print(self.parser)
 
     for shapeName in self.parser:
         for identifier in self.parser[shapeName]:
             methods = {}
             for key in self.lexer:
                 code_line = self.lexer[key]
-                if len(code_line) > 1 and code_line[0][0] == identifier and code_line[1][1] == 'DOT' and code_line[2][1] == 'methodName':
+                if code_line[0].type == 'IDENTIFIER' and code_line[1].type == 'DOT' and code_line[2].type == 'METHOD_NAME' and code_line[0].value == identifier:
                     arguments = []
                     i = 4
-                    while(code_line[i][0] != ')'):
-                        if code_line[i][1] == 'string':
-                            arguments.append(str(code_line[i][0]))
-                        elif code_line[i][1] == 'numericType':
-                            arguments.append(float(code_line[i][0]))
+                    while(code_line[i].value != ')'):
+                        if code_line[i].type == 'STRING':
+                            arguments.append(str(code_line[i].value))
+                        elif code_line[i].type == 'NUMERIC_TYPE':
+                            arguments.append(float(code_line[i].value))
                         i += 1
-                    methods[code_line[2][0]] = arguments
+                    methods[code_line[2].value] = arguments
             self.parser[shapeName][identifier] = methods
+    #print(self.parser)
     return self.parser
 
   #printing Abstract Syntax Tree

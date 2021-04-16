@@ -11,11 +11,12 @@ class Token(object):
   def __str__(self):
     """String representation of the class instance.
         Examples:
-            Token(INTEGER, 3)
-            Token(PLUS, '+')
-            Token(MUL, '*')"""
+            (INTEGER, 3)
+            (PLUS, '+')
+            (MUL, '*')"""
 
-    return 'Token({type}, {value})'.format(type=self.type, value=repr(self.value))
+    return '({type}, {value})'.format(type=self.type, value=repr(self.value))
+    #Mihai Moglan: am sters cuv "Token" - imi crea dificultati in rezolvare
 
   def __repr__(self):
     return self.__str__()

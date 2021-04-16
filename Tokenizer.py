@@ -1,5 +1,4 @@
 import re
-import json
 
 from DSL_Grammar import OPEN_BRACKET, CLOSE_BRACKET
 
@@ -10,8 +9,10 @@ class Tokenizer(object):
     def tokenize(self):
         tokensPerLine = {}
         i = 0
-        for line in self.programText:
+        for line_x in self.programText:
             lineTokens = []
+            line = line_x.replace('(', '( ')
+            line = line.replace(')', ' )')
             for word in line.strip().split():
                 for token in re.split("(,)",word.strip()):
                     if token == '':
