@@ -12,6 +12,7 @@ semantic = SemanticAnalyzer(lexer)
 semantic.getSemanticErrors()
 
 parser = Parser(lexer)
-parser.getParserAST()
-#parser.printAST()
+
+print(parser.getParserAST())
+parser.printAST()
 

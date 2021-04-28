@@ -75,10 +75,10 @@ SHAPE_METHODS = {
     'Point' : {
         'draw' : [],
         'setName' : ['STRING'],
-        'setCoordinates' : ['NUMERIC_TYPE', 'NUMERIC_TYPE', 'NUMERIC_TYPE'],
+        'setCoordinates' : ['NUMERIC_TYPE', 'NUMERIC_TYPE'],
         'setColor' : ['STRING'],
         'setSize' : ['NUMERIC_TYPE'],
-        'setPointOnLine' : [ 'STRING', 'STRING', 'NUMERIC_TYPE'] #edge, start_vertex, dist_from_start
+        'setPointOnLine' : [ 'Line', 'Point', 'NUMERIC_TYPE'] #edge, start_vertex, dist_from_start
     },
     
     'Line' : {
@@ -86,8 +86,7 @@ SHAPE_METHODS = {
         'setVertices' : ['STRING', 'STRING'],
         'setLength' : ['NUMERIC_TYPE'],
         'setColor' : ['STRING'],
-        'drawLine' : ['POINT', 'POINT'] # e neveoie de declarat initial 2 POINT-uri
-        
+        'drawLineFromPoints' : ['POINT', 'POINT'] # e neveoie de declarat initial 2 POINT-uri
     },
     
     'Triangle' : {

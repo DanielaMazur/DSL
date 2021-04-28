@@ -1,4 +1,4 @@
-Triangle myTriangle
-myTriangle.setEdgeLength( 1, 4.5 , 6)
-myTriangle.setVertices("A", "B","C")
-myTriangle.draw()
+Point myPoint
+myPoint.setColor("red")
+myPoint.setName("X")
+myPoint.draw()
