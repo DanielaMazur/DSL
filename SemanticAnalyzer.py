@@ -44,7 +44,7 @@ class SemanticAnalyzer(object):
             tokenTypes.append(token.type)
 
         groupTokens = group_tokens_frequency(tokenTypes)
-        if methodInvocationLine[-1].type != 'CLOSE_BRACKET' or groupTokens['IDENTIFIER'] > 1 or groupTokens['METHOD_NAME'] > 1:
+        if methodInvocationLine[-1].type != 'CLOSE_BRACKET' or groupTokens['METHOD_NAME'] > 1:
             raise Exception("Each statement should be written in a new line")
 
         invokedMethodParameterListGrammar = SHAPE_METHODS[variableShapeType][invokedMethodName]

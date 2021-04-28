@@ -12,7 +12,7 @@ class Point(ps.Style):
 
     self.figure = figure
     
-    self.size = 0.1
+    self.size = 0.05
     self.color = DEFAULT_COLOR
     self.name = ''
 

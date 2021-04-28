@@ -35,7 +35,7 @@ METHOD_NAME = {
     'SET_SIZE' : 'setSize', #setarea dimensiunii unui POINT
     'SET_POINT_ON_LINE' : 'setPointOnLine',
     'SET_LENGTH' : 'setLength', #specificarea lungimii LINE
-    'DRAW_LINE' : 'drawLine', #desenarea intre doua puncte(e nevoie de specificare 2 POINT) LINE
+    'DRAW_LINE_FROM_POINTS' : 'drawLineFromPoints', #desenarea intre doua puncte(e nevoie de specificare 2 POINT) LINE
     'SET_EDGE_LENGTH' : 'setEdgeLength', #specficiarea lungimea laturilor TRIANGLE, SQUARE, RECTANGLE, PARALELOGRAM, RHOMBUS, TRAPEZOID
     'SET_NAME_ANGLES' : 'setNameAngles', #specificarea denumirea unghiurilor TRIANGLE, SQUARE, RECTANGLE, PARALELOGRAM, RHOMBUS, TRAPEZOID
     'SET_ANGLES_DEGREES' : 'setAnglesDegrees', #specificarea valorii unghiurilor in grade TRIANGLE, PARALELOGRAM, RHOMBUS, TRAPEZOID
@@ -78,7 +78,7 @@ SHAPE_METHODS = {
         'setCoordinates' : ['NUMERIC_TYPE', 'NUMERIC_TYPE'],
         'setColor' : ['STRING'],
         'setSize' : ['NUMERIC_TYPE'],
-        'setPointOnLine' : [ 'Line', 'Point', 'NUMERIC_TYPE'] #edge, start_vertex, dist_from_start
+        'setPointOnLine' : [ 'IDENTIFIER', 'IDENTIFIER', 'NUMERIC_TYPE'] #edge, start_vertex, dist_from_start
     },
     
     'Line' : {
@@ -86,7 +86,7 @@ SHAPE_METHODS = {
         'setVertices' : ['STRING', 'STRING'],
         'setLength' : ['NUMERIC_TYPE'],
         'setColor' : ['STRING'],
-        'drawLineFromPoints' : ['POINT', 'POINT'] # e neveoie de declarat initial 2 POINT-uri
+        'drawLineFromPoints' : ['IDENTIFIER', 'IDENTIFIER'] # e neveoie de declarat initial 2 POINT-uri
     },
     
     'Triangle' : {

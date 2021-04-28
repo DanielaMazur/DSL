@@ -65,23 +65,3 @@ class Line(ps.Style):
     self.y1 = point1.y
     self.y2 = point2.y
 
-
-from point import Point
-
-figure = ps.Figure(-5.0, 5.0, -5.0, 5.0, MatplotlibBackend)
-
-l = Line(figure)
-point1 = Point(figure)
-point2 = Point(figure)
-
-l.drawLineFromPoints(point1, point2)
-
-l.draw()
-
-pointOnLine = Point(figure)
-
-pointOnLine.setPointOnLine(l, point1, 1 )
-
-pointOnLine.draw()
-
-figure.save("interpretation/assets/final.png")

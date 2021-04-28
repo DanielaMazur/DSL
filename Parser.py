@@ -35,10 +35,11 @@ class Parser(object):
                     arguments = []
                     i = 4
                     while(code_line[i].value != ')'):
-                        if code_line[i].type == 'STRING':
-                            arguments.append(str(code_line[i].value))
-                        elif code_line[i].type == 'NUMERIC_TYPE':
+                        if code_line[i].type == 'NUMERIC_TYPE':
                             arguments.append(float(code_line[i].value))
+                        elif code_line[i].type == 'STRING' or code_line[i].type == 'IDENTIFIER':
+                            arguments.append(str(code_line[i].value))
+
                         i += 1
                     methods[code_line[2].value] = arguments
             self.parser[shapeName][identifier] = methods
