@@ -1,11 +1,10 @@
 import pysketcher as ps
 from pysketcher.backend.matplotlib import MatplotlibBackend
 figure = ps.Figure(-5.0, 5.0, -5.0, 5.0, MatplotlibBackend)
-from interpretation.Cube import Cube
-A = Cube(figure)
-A.setLength(2.5)
-A.drawDiagonal(4.0,6.0)
-A.setVertices("A","B","C","D","E","F","G","H")
-A.drawLength()
+from interpretation.Paralelogram import Paralelogram
+A = Paralelogram(figure)
+A.setAnglesDegrees(72.0)
+A.setEdgeLength(5.0,4.0)
+A.setNameAngles("1","2","3","4")
 A.draw()
 figure.save('interpretation/assets/final.png')

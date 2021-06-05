@@ -70,7 +70,9 @@ METHOD_NAME = {
     'SET_PRISM' : 'setPrism', #setarea parametrilor unei PRISM
     'SET_SPHERE' : 'setSphere', #setarea parametrilor unei sfere,
     'SET_CENTER' : 'setCenter',
-    'DRAW_LENGTH' : 'drawLength'
+    'DRAW_LENGTH' : 'drawLength',
+    'DRAW_BIG_DIAGONAL' : 'drawBigDiagonal',
+    'DRAW_SMALL_DIAGONAL' : 'drawSmallDiagonal'
 }
 
 SHAPE_METHODS = {
@@ -124,10 +126,11 @@ SHAPE_METHODS = {
     'Paralelogram' : {
         'draw' : [],
         'setVertices' : ['STRING', 'STRING', 'STRING', 'STRING'],
-        'drawDiagonal' : ['POINT', 'POINT'], # start si end point
-        'setEdgeLength' : ['NUMERIC_TYPE', 'NUMERIC_TYPE', 'NUMERIC_TYPE', 'NUMERIC_TYPE'],
+        'drawBigDiagonal' : [],
+        'drawSmallDiagonal' : [], 
+        'setEdgeLength' : ['NUMERIC_TYPE', 'NUMERIC_TYPE'],
         'setNameAngles' : ['STRING', 'STRING', 'STRING', 'STRING'],
-        'setAngleDegrees' : ['NUMERIC_TYPE', 'NUMERIC_TYPE', 'NUMERIC_TYPE', 'NUMERIC_TYPE']
+        'setAnglesDegrees' : ['NUMERIC_TYPE']
     },
 
     'Rhombus' : {
