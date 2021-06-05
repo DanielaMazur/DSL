@@ -16,7 +16,6 @@ class Token(object):
             (MUL, '*')"""
 
     return '({type}, {value})'.format(type=self.type, value=repr(self.value))
-    #Mihai Moglan: am sters cuv "Token" - imi crea dificultati in rezolvare
 
   def __repr__(self):
     return self.__str__()

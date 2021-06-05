@@ -15,8 +15,4 @@ semantic.getSemanticErrors()
 parser = Parser(lexer)
 interpreter = Interpreter(parser)
 
-
-print(parser.getParserAST())
-parser.printAST()
-
 interpreter.interpret()

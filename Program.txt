@@ -1,33 +1,8 @@
-Point A
-A.setCoordinates(-3, 0)
-A.setName("A")
-A.setColor("red")
+Cube A
+
+A.setLength(2.5)
+
+A.drawDiagonal(4, 6)
+A.setVertices("A", "B", "C", "D", "E", "F", "G", "H")
+A.drawLength()
 A.draw()
-
-Point B
-B.setCoordinates(0, 0)
-B.setName("B")
-B.setColor("red")
-B.draw()
-
-Point C
-C.setCoordinates(3, 0)
-C.setName("C")
-C.setColor("red")
-C.draw()
-
-Point D
-D.setCoordinates(4, 0)
-D.setName("D")
-D.setColor("red")
-D.draw()
-
-Line AB
-AB.drawLineFromPoints(A, B)
-AB.setColor("blue")
-AB.draw()
-
-Line CD
-CD.drawLineFromPoints(C, D)
-CD.setColor("blue")
-CD.draw()

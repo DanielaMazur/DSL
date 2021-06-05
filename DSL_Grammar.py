@@ -21,14 +21,15 @@ SHAPE_NAME = {
     'PYRAMID' : 'Pyramid',
     'CONE' : 'Cone',
     'PRISM' : 'Prism',
-    'SPHERE' : 'Sphere'
+    'SPHERE' : 'Sphere',
+    'CUBE' : 'Cube'
 }
 
 METHOD_NAME = {
     #'SET_PARAMETERS' : 'setParameters', nu e corect trebuie de sters
     'DRAW' : 'draw', #desenarea POINT, LINE, TRIANGLE, SQUARE, RECTANGLE, PARALELOGRAM, RHOMBUS, TRAPEZOID, POLYGON, CIRCLE, PYRAMID, CONE, PRISM, SPHERE
     'SET_VERTICES' : 'setVertices', #specificarea denumirea varfurilor LINE, TRIANGLE, SQUARE, RECTANGLE, PARALELORGRAM, RHOMBUS, TRAPEZOID
-    
+    'SET_POINTS' : 'setPoints',
     'SET_NAME' : 'setName', #setare nume la POINT
     'SET_COORDINATES' : 'setCoordinates', #setare coordonate, pozitia in spatiu, locatia, etc POINT
     'SET_COLOR' : 'setColor', #schimbarea culorii POINT, LINE
@@ -47,7 +48,7 @@ METHOD_NAME = {
     'DRAW_ORTHOCENTER' : 'drawOrthoCenter', #desenarea ortocentru(intersectia inaltimelor) la TRIANGLE
     'DRAW_CIRCUM_CENTER' : 'drawCircumCenter', #intersectia mediatoarelor la TRIANGLE
     'DRAW_WEIGHT_CENTER' : 'drawWeightCenter', #centrul de greutate, intersectia medianelor TRIANGLE
-    'DRAW_CIRCUMSCRIS_CIRCLE' : 'drawCircumscrisCirle', #desenarea cercului circumscris TRIANGLE, SQUARE, RECTANGLE, TRAPEZOID, POLYGON
+    'DRAW_CIRCUMSCRIS_CIRCLE' : 'drawCircumscrisCircle', #desenarea cercului circumscris TRIANGLE, SQUARE, RECTANGLE, TRAPEZOID, POLYGON
     'DRAW_INSCRIS_CIRCLE' : 'drawInscrisCircle', #desenarea cercului inscris TRIANGLE, SQUARE, RECTANGLE, PARALELOGRAM, RHOMBUS, TRAPEZOID, POLYGON
     'DRAW_DIAGONAL' : 'drawDiagonal', #desenarea diagonalei in SQUARE, RECTANGLE, PARALELOGRAM, RHOMBUS, TRAPEZOID, CIRCLE
     'SET_REGULAR_POLYGON': 'setRegularPolygon', #stabilirea numarului de laturi si lungimile laturililo unui regulat POLYGON
@@ -67,8 +68,9 @@ METHOD_NAME = {
     'DRAW_CIRCUMSCRIS_SPHERE' : 'drawCircumscrisSpehere', #desenarea unei sfere circumscrise la PYRAMID
     'SET_CONE' : 'setCone', #setarea parametrii uni CONE
     'SET_PRISM' : 'setPrism', #setarea parametrilor unei PRISM
-    'SET_SPHERE' : 'setSphere' #setarea parametrilor unei sfere
-
+    'SET_SPHERE' : 'setSphere', #setarea parametrilor unei sfere,
+    'SET_CENTER' : 'setCenter',
+    'DRAW_LENGTH' : 'drawLength'
 }
 
 SHAPE_METHODS = {
@@ -103,18 +105,20 @@ SHAPE_METHODS = {
         'drawOrthoCenter' : [],
         'drawCircumCenter' : [],
         'drawWightCenter' : [],
-        'drawCircumcrisCircle' : [],
+        'drawCircumscrisCircle' : [],
         'drawInscrisCircle' : []
     },
     
     'Square' : {
         'draw' : [],
+        'setPoints':['IDENTIFIER', 'IDENTIFIER', 'IDENTIFIER', 'IDENTIFIER'],
         'setVertices' : ['STRING', 'STRING', 'STRING', 'STRING'],
-        'drawDiagonal' : ['POINT', 'POINT'], # start si end point
+        'drawDiagonal' : ['IDENTIFIER', 'IDENTIFIER'], # start si end point
         'setEdgeLength' : ['NUMERIC_TYPE'],
-        'drawCircumcrisCircle' : [],
+        'drawCircumscrisCircle' : [],
         'drawInscrisCircle' : [],
-        'setNameAngles' : ['STRING', 'STRING', 'STRING', 'STRING']
+        'setNameAngles' : ['STRING', 'STRING', 'STRING', 'STRING'],
+        'setCenter' : ['NUMERIC_TYPE', 'NUMERIC_TYPE']
     },
     
     'Paralelogram' : {
@@ -191,5 +195,13 @@ SHAPE_METHODS = {
     'Sphere' : {
         'setSphere' : ['NUMERIC_TYPE', 'STRING'],
         'draw' : []
+    },
+
+    "Cube": {
+        "draw": [],
+        "setLength": ['NUMERIC_TYPE'],
+        "setVertices" : ['STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING', 'STRING'],
+        "drawDiagonal": ['NUMERIC_TYPE', 'NUMERIC_TYPE'],
+        "drawLength" : []
     }
 }
