@@ -1,0 +1,7 @@
+Square S
+
+S.setVertices("A", "B", "C", "D")
+
+S.drawCircumscrisCircle()
+
+S.draw()

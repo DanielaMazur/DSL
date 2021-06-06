@@ -1,6 +1,7 @@
-Paralelogram A
-A.setAnglesDegrees(72)
-A.setEdgeLength(5, 4)
-A.setNameAngles("1", "2", "3", "4")
+Cube A
+
+A.drawDiagonal(3, 5)
+
+A.setVertices("A", "B", "C", "D", "F", "G", "H", "I")
 
 A.draw()

@@ -1,0 +1,7 @@
+Cube A
+
+A.drawDiagonal(3, 5)
+
+A.setVertices("A", "B", "C", "D", "F", "G", "H", "I")
+
+A.draw()
