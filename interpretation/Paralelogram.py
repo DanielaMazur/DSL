@@ -1,6 +1,6 @@
 import pysketcher as ps
 import math
-from interpretation.point import Point
+from interpretation.Point import Point
 
 class Paralelogram(ps.Style):
     def __init__(self, figure):
